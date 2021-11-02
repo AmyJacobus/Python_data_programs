@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
 
 import validation as v
-import student_maint as sm
+import student_maintenance as sm
+import course_maintenance as csm
+import sports_maintenance as spm
+
 
 """
 # Programmer: Caleb Fowler
@@ -17,20 +20,6 @@ _status__ = 'Development'
 
 
 def display_main_menu():
-    """
-         display_menu()
-             Displays a list of all the valid main menu options
-             It also handles for nonnumerical data and invalid menu option selected.
-
-             1 - Student Maintenance Menu
-             2 - Courses Maintenance Menu
-             3 - Sports Menu
-             4 - Full Report
-             0 - Exit program
-
-             :return no value
-             :rtype none
-    """
     print("MAIN MENU")
     print('=================================')
     print("1 - Student Maintenance Menu")
@@ -67,41 +56,59 @@ def student_maint_menu():
     print()
 
 
-def main():
-    """
-       main()
-             Main keeps the program looping until the user enters 0 to exit the program
-             then based on the user's selected, will call the corresponding function option
-             Local scoped students is a 2D list that is pass as an argument to each menu option function
-             Local scoped max_student_id is the last student id used, and is passed to the add_student function,
-             and this function will return the last added student id
-            :return no value
-            :rtype none
-    """
-    students = []
-    next_student_id = 1
+def student_maint_menu(students, next_student_id):
+
+    display_menu_student_mntc()
+
+    command = v.get_range(prompt='Please enter a Menu #(Valid 0-4)', low=-1, high=4, data_type='int')
 
     while True:
-        display_main_menu()
-        command = v.get_range('Please enter a Menu #', 0, 4)
-        print()
-
         if command == 1:
             sm.list(students)
+            return students
         elif command == 2:
             sm.add(students, next_student_id)
             next_student_id += 1
+            return students, next_student_id
         elif command == 3:
             sm.update(students)
+            return students
         elif command == 4:
             sm.delete(students)
+            return students
         elif command == 0:
             break
         else:
             print("Not a valid command. Please try again.\n")
 
+
+def main(students, next_student_id):
+
+    # students = []
+    # next_student_id = 1
+
+    while True:
+        display_main_menu()
+
+        command = v.get_range('Please enter a Menu #', 0, 4)
         print()
-    print("Bye!")
+
+        if command == 1:
+            student_maint_menu(students, next_student_id)
+    #     elif command == 2:
+    #         # sm.add(students, next_student_id)
+    #         next_student_id += 1
+    #     elif command == 3:
+    #         # sm.update(students)
+    #     elif command == 4:
+    #         # sm.delete(students)
+    #     elif command == 0:
+    #         break
+    #     else:
+    #         print("Not a valid command. Please try again.\n")
+    #
+    #     print()
+    # print("Bye!")
 
 
 if __name__ == "__main__":
