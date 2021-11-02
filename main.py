@@ -23,8 +23,8 @@ def display_main_menu():
     print("MAIN MENU")
     print('=================================')
     print("1 - Student Maintenance Menu")
-    print("2 -  Courses Maintenance Menu")
-    print("3 -  Sports Menu")
+    print("2 - Courses Maintenance Menu")
+    print("3 - Sports Menu")
     print("4 - Full Report")
     print("0 - Exit Program")
 
@@ -65,27 +65,24 @@ def student_maint_menu(students, next_student_id):
     while True:
         if command == 1:
             sm.list(students)
-            return students
         elif command == 2:
             sm.add(students, next_student_id)
             next_student_id += 1
-            return students, next_student_id
+            return next_student_id
         elif command == 3:
             sm.update(students)
-            return students
         elif command == 4:
             sm.delete(students)
-            return students
         elif command == 0:
             break
         else:
             print("Not a valid command. Please try again.\n")
 
 
-def main(students, next_student_id):
+def main():
 
-    # students = []
-    # next_student_id = 1
+    students = []
+    next_student_id = 1
 
     while True:
         display_main_menu()
@@ -94,7 +91,7 @@ def main(students, next_student_id):
         print()
 
         if command == 1:
-            student_maint_menu(students, next_student_id)
+            next_student_id = student_maint_menu()
     #     elif command == 2:
     #         # sm.add(students, next_student_id)
     #         next_student_id += 1
