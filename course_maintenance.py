@@ -37,5 +37,8 @@ def add_student_course(students, valid_courses):
     student_id = v.get_positive(prompt='Please type in the ID # of the student you would like to add courses'
                                        'for', limit=0)
 
+    student_index = sm.find_student_index(student_id)
+
+
 def delete_student_course(student,, valid_courses):
     print()
