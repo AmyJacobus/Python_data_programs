@@ -39,6 +39,13 @@ def add_student_course(students, valid_courses):
 
     student_index = sm.find_student_index(student_id)
 
+    student = students[student_index] # I have the student now
+
+    # display what courses the student is current enrolled in by calling list_student_courses passing
+    # only the selected students data
+
+
+
 
 def delete_student_course(student,, valid_courses):
     print()
