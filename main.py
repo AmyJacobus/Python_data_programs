@@ -44,6 +44,7 @@ def main():
 
         if command == 1:
             student_maint_menu(students, next_student_id)
+            print()
 
     #     elif command == 2:
     #         # sm.add(students, next_student_id)
