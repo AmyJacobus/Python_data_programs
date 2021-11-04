@@ -13,6 +13,8 @@ __date__ = 'NOV 2, 2021'
 __status__ = 'Development'
 
 
+import validation as v
+
 def display_menu():
     """
     Display menu to the user.
