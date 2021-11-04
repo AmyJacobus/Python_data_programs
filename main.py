@@ -125,6 +125,51 @@ def course_maint_menu(students, next_student_id):
             print("Not a valid command. Please try again.\n")
 
 
+def sport_mntc():
+    """
+     display_menu()
+         Displays a list of all the valid main menu options
+         It also handles for nonnumerical data and invalid menu option selected.
+
+         1 - Sports List
+         2 - Add Sport
+         3 - Delete Sport
+         0 - Return to Main Menu
+
+         :return no value
+         :rtype none
+        """
+    print("COURSE MAINTENANCE MENU")
+    print('=================================')
+    print("1 - Sports List")
+    print("2 -  Add Sport")
+    print("3 -  Delete Sport")
+    print("0 - Return to Main Menu")
+
+    print()
+
+
+def sport_maint_menu(students, next_student_id):
+
+    display_sport_mntc()
+
+    command = v.get_range(prompt='Please enter a Menu #(Valid 0-4)', low=-1, high=4, data_type='int')
+
+    while True:
+        if command == 1:
+            sm.list(sports)
+        elif command == 2:
+            sm.add(students, next_student_id)  # add will change once we get course maintenance running
+            next_student_id += 1
+            return next_student_id
+        elif command == 3:
+            sm.update(sports)
+        elif command == 0:
+            return
+        else:
+            print("Not a valid command. Please try again.\n")
+
+
 def main():
 
     students = []
@@ -140,18 +185,15 @@ def main():
             display_student_maint_menu()
         elif command == 2:
             display_course_maint_menu()
-    #         next_student_id += 1
-    #     elif command == 3:
-    #         # sm.update(students)
-    #     elif command == 4:
-    #         # sm.delete(students)
-    #     elif command == 0:
-    #         break
-    #     else:
-    #         print("Not a valid command. Please try again.\n")
-    #
-    #     print()
-    # print("Bye!")
+        elif command == 3:
+            display_sport_maint_menu()
+        elif command == 0:
+            break
+        else:
+            print("Not a valid command. Please try again.\n")
+
+        print()
+    print("Bye!")
 
 
 if __name__ == "__main__":
