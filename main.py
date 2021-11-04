@@ -8,7 +8,7 @@ import sports_maintenance as spm
 
 """
 # Programmer: Caleb Fowler
-# Date: October 31, 2021
+# Date: Nov 2, 2021
 # Description:     Student Data System for managing student information (student id, first name, and last name)
 """
 
@@ -43,10 +43,9 @@ def main():
         print()
 
         if command == 1:
-            student_maint_menu(students, next_student_id)
-            print()
+           sm.main_menu(students, next_student_id)
 
-    #     elif command == 2:
+        # elif command == 2:
     #         # sm.add(students, next_student_id)
     #         next_student_id += 1
     #     elif command == 3:

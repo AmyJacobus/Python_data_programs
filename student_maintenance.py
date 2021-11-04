@@ -7,7 +7,7 @@ Description:
 """
 
 # Authorship
-__author__ = 'ADD NAMES HERE'
+__author__ = 'Amy and Caleb'
 __version__ = '1.0'
 __date__ = 'NOV 2, 2021'
 __status__ = 'Development'
@@ -186,15 +186,12 @@ def update(students):
         print('Update was cancelled')
 
 
-def main():
+def main_menu(students, next_student_id):
     """
     This function basically runs different functions from the validation module and the student_mtnc module, in a while
     loop, until the user decided that they no longer want to continue to use the program and exit.
     :return: n/a
     """
-
-    students = []  # start empty
-    next_student_id = 1  # Starting student ID at 1
 
     while True:
 
@@ -202,14 +199,14 @@ def main():
 
         command = v.get_range(prompt='Please enter a Menu #(Valid 0-4)', low=-1, high=4, data_type='int')
         if command == 1:
-            sm.list(students)
+            list(students)
         elif command == 2:
-            sm.add(students, next_student_id)
+            add(students, next_student_id)
             next_student_id += 1
         elif command == 3:
-            sm.delete(students)
+            delete(students)
         elif command == 4:
-            sm.update(students)
+            update(students)
         elif command == 0:
             print()
             print('=' * 50)
@@ -224,4 +221,4 @@ def main():
 
 
 if __name__ == "__main__":  # Basically if the name of the module is equal to main
-    main()  # Run this specific program.
+    main_menu()  # Run this specific program.
