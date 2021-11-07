@@ -23,9 +23,9 @@ def display_menu():
     print()
     print('Sports Menu')
     print('=' * 50)
-    print('1 - List all Sports')
-    print('2 - Add a Sport')
-    print('3 - Delete a Sport')
+    print('1 - List all students sports')
+    print('2 - Add a student\'s sport')
+    print('3 - Delete a student\'s sport')
     print('0 - Return to Main Menu')
     print()
 
@@ -43,7 +43,7 @@ def main_menu(students, next_student_id):
 
         command = v.get_range(prompt='Please enter a Menu #(Valid 0-4)', low=-1, high=4, data_type='int')
         if command == 1:
-            list(students)
+            display_list_valid_sports()
         elif command == 2:
             add(sports, next_student_id)
             next_student_id += 1
@@ -59,26 +59,54 @@ def main_menu(students, next_student_id):
         print()
 
 
-def list_student_sports(students):
+def list_student_sports(student):
     """
 
-    :param students:
+    :param student:
     :return:
     """
     print(f'    Student ID # {student[0]} {student[1]} {student[2]} is in: ', end='')
 
-    for sport in student[3]
+    for sport in student[3]:
+        print(f'{sport}', end=', ')
 
-
-def list_sports_option(valid_courses, mode='added'):
     print()
 
 
-def add_student_sport(students, valid_courses):
+def list_valid_sports(valid_sports, mode='added'):
+    """
+    :param valid_sports:
+    :param mode:
+    :return:
+    """
+    print(f'Please select from the following list of sports to be {mode}:')
+
+    num_sports = 0
+
+    print('   ', end='')
+    for sport in valid_sports:
+        num_sports += 1
+        print(f'{num_sports}={sport}', end=', ')
+    print('0=Done')
+
+    return num_sports
+
+
+def add_student_sport(students, valid_sports):
+    print()
+    print('Add a Student\'s Sport')
+    print('_' * 50)
+
+    first_name = v.get_string(prompt='Please enter the student\'s First Name').title()
+    last_name = v.get_string(prompt='Please enter the student\'s Last Name').title()
     print()
 
+    students.append([next_student_id, first_name, last_name])
 
-def delete_student_sport(student, valid_courses):
+    print(f'Student ID #{next_student_id} {first_name} {last_name} was added.')
+
+
+def delete_student_sport(student, sports):
     print()
     print(test)
     print(test)
