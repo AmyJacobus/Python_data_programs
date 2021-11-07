@@ -12,15 +12,14 @@
 __author__ = 'Caleb Fowler & Amy Jacobus'
 __version__ = '1.0'
 __date__ = '2021.11.02'
-
-import validation
-
 _status__ = 'Development'
 
 def menu():
-    
-    
-    
+    print()
+
+def student_data():
+    print()
+
 
 def main_menu():
     print('In here we test!')
