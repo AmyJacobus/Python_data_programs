@@ -3,7 +3,7 @@
 import validation as v
 import student_maintenance as sm
 import course_maintenance as csm
-import sports_maintenance as spm
+import sports_maint as spm
 
 
 """
@@ -43,13 +43,11 @@ def main():
         print()
 
         if command == 1:
-           sm.main_menu(students, next_student_id)
-
-        # elif command == 2:
-    #         # sm.add(students, next_student_id)
-    #         next_student_id += 1
-    #     elif command == 3:
-    #         # sm.update(students)
+            sm.main_menu(students, next_student_id)
+        elif command == 2:
+            csm.main_menu(valid_courses, students)
+        elif command == 3:
+            spm.main_menu(students, next_student_id)
     #     elif command == 4:
     #         # sm.delete(students)
     #     elif command == 0:
