@@ -43,6 +43,22 @@ def add_student_course(students, valid_courses):
 
     # display what courses the student is current enrolled in by calling list_student_courses passing
     # only the selected students data
+    print(f'Student ID # {student[0]} {student[1]} {student[2]} is currently enrolled in courses: {student[3]}')
+
+    # Display what courses that the user can select from by calling the list_courses_option passing the tuple
+    # of valid courses, and the mode added
+    print(f'The student can select the following courses: {list_courses_option(valid_courses)}')
+
+    while True:
+        # ADD A MAX OF NUMBERS FOR COURSES STILL
+        course_number = v.get_range(prompt='What course number would you like to add: ', low=0, high=)
+        if course_number == 0:
+            break
+
+        course_name =
+
+
+
 
 
 
