@@ -206,6 +206,8 @@ def main_menu():
         elif command == 3:
             delete_student_course(students, valid_courses)
         elif command == 0:
+            print('Exiting the course maintenance now..')
+            print('You have successfully exited the course maintenance.')
             exit()
         else:
             print("Not a valid command. Please try again.\n")
