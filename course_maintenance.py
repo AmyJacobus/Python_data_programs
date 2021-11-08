@@ -31,36 +31,22 @@ def display_menu():
     print()
 
 
-def main_menu(students, valid_courses):
+def list_student_courses(student):
+
+    print(f'       Student ID # {student[0]} {student[1]} {student[2]} is in: ', end='')
+
+    for course in student[3]:
+        print(f'{course}', end=', ')
+
+    print()
+
+
+def list_students_courses(students):
     """
-    This function basically runs different functions from the validation module and the student_mtnc module, in a while
-    loop, until the user decided that they no longer want to continue to use the program and exit.
-    :return: n/a
+
+    :param students:
+    :return:
     """
-
-    while True:
-
-        display_menu()
-
-        command = v.get_range(prompt='Please enter a Menu #(Valid 0-4)', low=-1, high=4, data_type='int')
-        if command == 1:
-            list_student_courses(students)
-        elif command == 2:
-            add_student_course(students, valid_courses)
-           valid_courses += 1
-        elif command == 3:
-            delete_student_course(students, valid_courses)
-        elif command == 0:
-            exit()
-        else:
-            print("Not a valid command. Please try again.\n")
-
-        print()
-        input('Press Enter to continue...')
-        print()
-
-
-def list_student_courses(students):
 
     if len(students) == 0:
         print('There are no students in the list.')
@@ -79,7 +65,8 @@ def list_student_courses(students):
 
     return
 
-def list_courses_option(valid_courses, mode='added'):
+
+def list_valid_courses(valid_courses, mode='added'):
     """
 
     :param valid_courses:
@@ -87,7 +74,7 @@ def list_courses_option(valid_courses, mode='added'):
     :return: num_courses so other functions or modules can make use of it
     """
 
-    print(f'Pleases select from the following list of courses to me {mode}:')
+    print(f'Pleases select from the following list of courses to be {mode}:')
 
     num_courses = 0
 
@@ -109,7 +96,7 @@ def add_student_course(students, valid_courses):
                                        'for', limit=0)
 
     # NEEDS TO BE CHECKED
-    student_index = sm.find_student_index(student_id)
+    student_index = sm.find_student_index(students,student_id)
     if student_index == -1:
         print('Not found')
         return
@@ -122,25 +109,28 @@ def add_student_course(students, valid_courses):
 
     #
     print('These are the following courses that the student can select from: ')
-    list_courses_option('WHAT TO PUT IN HERE')
+    list_valid_courses(valid_courses, mode='added')
 
     while True:
 
-        course_number = v.get_range(prompt='What course number would you like to add: ', low=0, high=4)
+        course_number = v.get_range(prompt='What course number would you like to add: ', low=0, high=5)
         if course_number == 0:
             break
 
-        if (the course name already in the student's list of courses')
-            print('display message already in course name')
+        course_name = valid_courses[course_number-1]  # get the course name for the valid tuple
+
+        if course_name in student[3]:
+            print(f'The student is already enrolled in {course_name}.')
+            continue
         else:
-            students.append([]) # add the course name to the student's list
-            # sort the student's course list'
-            print('Student is now in the course name.')
+            student[3].append(course_name) # add the course name to the student's list
+            student[3].sort() # sort the student's course list
+            print(f'Student is now enrolled in {course_name}')
+            break
+
     # Display what courses the student is current enrolled in by calling list_student_courses passing
     # only the selected student's data'
-
-    print(f'Student ID # {} is enrolled in the following courses: {}')
-
+    list_student_courses(student)
 
 
 def delete_student_course(students, valid_courses):
@@ -151,19 +141,78 @@ def delete_student_course(students, valid_courses):
 
     student_id = v.get_positive(prompt='Please type in student id: ', limit=0, data_type='int')
 
+    student_index = sm.find_student_index(students,student_id)
+    if student_index == -1:
+        print('Not found')
+        return
+
+    student = students[student_index]  # I have the student now
+
     # Display a list of courses a student is currently enrolled in
+    print(f'Student ID # {student[0]} is enrolled in the following courses:')
+    list_student_courses(student)
+
     # Display a list of valid courses
+    # print('These are the following courses that can be deleted: ')
+    list_valid_courses(student[3], mode='delete')
 
     # Prompt the user to enter a valid course id or 0 to return to the course maintenance menu
     print('Please type in a valid course ID or 0 to return to course maintenance menu')
-    choice = v.get_range(prompt='input: ', low=0, high=4)
+    choice = v.get_range(prompt='input: ', low=0, high=5)
 
-    # If the student is not the select course, then display error message
-        print("There has been an error.")
-    # Else remove the course to the student's course list
+    while True:
+
+        if choice == 0:
+            print('Returning you back to the course maintenance menu')
+            break
+
+        course_choice = valid_courses[choice-1]
+
+        if course_choice not in student[3]:
+            print('There has been an error.')
+        else:
+            student[3].remove(course_choice)
 
     print('This is an update list of all the courses the student is enrolled in.')
-    # display an update list here
+    list_student_courses(student)
+
+
+def main_menu():
+    """
+    This function basically runs different functions from the validation module and the student_mtnc module, in a while
+    loop, until the user decided that they no longer want to continue to use the program and exit.
+    :return: n/a
+    """
+
+    valid_courses = ('English', 'History', 'Math', 'Science')
+    valid_sports = ('Football', 'Volleyball', 'Basketball', 'Track')
+
+    students = [
+        [1, 'John', 'Doe', ['English', 'Science'], ['Volleyball']],
+        [3, 'Sam', 'Smith', ['English', 'History', 'Math'], ['Football', 'Basketball']]
+    ]
+
+    next_student_id = 4
+
+    while True:
+
+        display_menu()
+
+        command = v.get_range(prompt='Please enter a Menu #(Valid 0-4)', low=-1, high=4, data_type='int')
+        if command == 1:
+            list_students_courses(students)
+        elif command == 2:
+            add_student_course(students, valid_courses)
+        elif command == 3:
+            delete_student_course(students, valid_courses)
+        elif command == 0:
+            exit()
+        else:
+            print("Not a valid command. Please try again.\n")
+
+        print()
+        input('Press Enter to continue...')
+        print()
 
 
 if __name__ == "__main__":  # Basically if the name of the module is equal to main
