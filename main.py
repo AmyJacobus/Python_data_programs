@@ -1,16 +1,16 @@
 #!/usr/bin/env python3
 
+"""
+Programmer: Caleb Fowler  and Ammishaddai Jacobus
+Date: Nov 10, 2021
+Description:     Student Data System for managing student information (student id, first name, and last name)
+"""
+
 import validation as v
 import student_maintenance as sm
 import course_maintenance as csm
 import sports_maint as spm
-
-
-"""
-# Programmer: Caleb Fowler
-# Date: Nov 2, 2021
-# Description:     Student Data System for managing student information (student id, first name, and last name)
-"""
+import student_report as str
 
 # the following are module level dunders (metadata) for the authorship information
 __author__ = 'Caleb Fowler'
@@ -39,24 +39,24 @@ def main():
     while True:
         display_main_menu()
 
-        command = v.get_range('Please enter a Menu #', 0, 4)
+        command = v.get_range('Please enter a Menu #', low=-1, high=4)
         print()
 
         if command == 1:
             sm.main_menu(students, next_student_id)
         elif command == 2:
-            csm.main_menu(valid_courses, students)
+            csm.main_menu(students, valid_courses)
         elif command == 3:
             spm.main_menu(students, next_student_id)
-    #     elif command == 4:
-    #         # sm.delete(students)
-    #     elif command == 0:
-    #         break
-    #     else:
-    #         print("Not a valid command. Please try again.\n")
-    #
-    #     print()
-    # print("Bye!")
+        elif command == 4:
+            str.main_menu(students)
+        elif command == 0:
+            break
+        else:
+            print("Not a valid command. Please try again.\n")
+
+        print()
+    print("You have successfully exited the database!")
 
 
 if __name__ == "__main__":
