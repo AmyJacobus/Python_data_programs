@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 
 """
-Programmers:
-Date:
+Programmers: Programmer: Caleb Fowler and Ammishaddai Jacobus
+Date: Nov 10, 2021
 Description:
 """
 

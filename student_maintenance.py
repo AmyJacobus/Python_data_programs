@@ -208,10 +208,9 @@ def main_menu(students, next_student_id):
         elif command == 4:
             update(students)
         elif command == 0:
-            print()
-            print('=' * 50)
-            print("You have securely and successfully exited the student record database!")
-            exit()
+            print('Exiting the course maintenance now..')
+            print('You have successfully exited the student maintenance.')
+            break
         else:
             print("Not a valid command. Please try again.\n")
 

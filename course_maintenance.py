@@ -211,7 +211,7 @@ def main_menu(students, valid_courses):
         elif command == 0:
             print('Exiting the course maintenance now..')
             print('You have successfully exited the course maintenance.')
-            exit()
+            break
         else:
             print("Not a valid command. Please try again.\n")
 
