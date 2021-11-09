@@ -3,7 +3,9 @@
 """
 Programmer: Caleb Fowler  and Ammishaddai Jacobus
 Date: Nov 10, 2021
-Description:     Student Data System for managing student information (student id, first name, and last name)
+Description: This the main module that imports all modules and runs them as a main program. It imports student maintenance,
+course maintenance, student sports,  student report and the validation to validate all user input. All these together
+make up the student database menu.
 """
 
 import validation as v
@@ -47,7 +49,7 @@ def main():
         elif command == 2:
             csm.main_menu(students, valid_courses)
         elif command == 3:
-            spm.main_menu(students, next_student_id)
+            spm.main_menu(students, valid_sports)
         elif command == 4:
             str.main_menu(students)
         elif command == 0:

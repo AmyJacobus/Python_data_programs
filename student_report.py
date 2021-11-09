@@ -3,7 +3,7 @@ Programmer: Caleb Fowler and Ammishaddai Jacobus
 Date: Nov 10, 2021
 Description: This is the student report module. In this module we output the student report to the user. It outputs all
 the user's store in the database, their ID, their first name, their last name, the courses they are enrolled in, and
-their sports.
+their sports. The user also gets the option to exit this program and go back to the main menu of the database.
 """
 
 
@@ -19,6 +19,10 @@ _status__ = 'Development'
 
 
 def display_menu():
+    """
+    This is the main menu to be displayed for this module.
+    :return: n/a
+    """
     print('Student Records Report Menu')
     print('=' * 50)
     print('1 - List all students report')
@@ -26,11 +30,13 @@ def display_menu():
     print()
 
 
-def selected_student_data():
-    print('Display data for a selected student')
-
-
 def all_students_data(students):
+    """
+    This function basically first checks if there are any students in the database, if not, it will tell the user
+    that there are no students in the database. And if there are students in the database, it will
+    :param students:
+    :return:
+    """
 
     print('Report of all students in the database')
 
