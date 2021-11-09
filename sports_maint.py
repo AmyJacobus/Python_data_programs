@@ -39,7 +39,7 @@ def list_student_sports(student):
     """
     print(f'    Student ID # {student[0]} {student[1]} {student[2]} is in: ', end='')
 
-    for sport in student[3]:
+    for sport in student[4]:
         print(f'{sport}', end=', ')
 
     print()
@@ -129,7 +129,7 @@ def delete_student_sport(students, valid_sports):
 
     # Display a list of valid sports
     print('These are the following sports that can be deleted: ')
-    list_valid_sports(student[3], mode='delete')
+    list_valid_sports(student[4], mode='delete')
 
     # Prompt the user to enter a valid sport id or 0 to return to the sport maintenance menu
     print('Please type in a valid sport ID or 0 to return to sports maintenance menu')
@@ -143,10 +143,10 @@ def delete_student_sport(students, valid_sports):
 
         sport_choice = valid_sports[choice-1]
 
-        if sport_choice not in student[3]:
+        if sport_choice not in student[4]:
             print('There has been an error.')
         else:
-            student[3].remove(sport_choice)
+            student[4].remove(sport_choice)
 
     print('This is an update list of all the sports the student is in.')
     list_student_sports(student)
