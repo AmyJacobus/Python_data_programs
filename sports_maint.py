@@ -127,15 +127,13 @@ def delete_student_sport(students, valid_sports):
     print(f'Student ID # {student[0]} is in the following sports:')
     list_student_sports(student)
 
-    # Display a list of valid sports
-    print('These are the following sports that can be deleted: ')
-    list_valid_sports(student[4], mode='delete')
-
-    # Prompt the user to enter a valid sport id or 0 to return to the sport maintenance menu
-    print('Please type in a valid sport ID or 0 to return to sports maintenance menu')
-    choice = v.get_range(prompt='input: ', low=0, high=5)
+    num_sports = list_valid_sports(student[4], mode='delete')
 
     while True:
+
+        # Prompt the user to enter a valid sport id or 0 to return to the sport maintenance menu
+        print('Please type in a valid sport ID or 0 to return to sports maintenance menu')
+        choice = v.get_range(prompt='input: ', low=0, high=num_sports)
 
         if choice == 0:
             print('Returning you back to the sports maintenance menu')
@@ -152,7 +150,7 @@ def delete_student_sport(students, valid_sports):
     list_student_sports(student)
 
 
-def main_menu(students, next_student_id):
+def main_menu(students, valid_sports):
     """
     This function basically runs different functions from the validation module and the student_mtnc module, in a while
     loop, until the user decided that they no longer want to continue to use the program and exit.
