@@ -29,7 +29,6 @@ def display_main_menu():
     print("3 - Sports Menu")
     print("4 - Full Report")
     print("0 - Exit Program")
-
     print()
 
 

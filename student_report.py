@@ -33,7 +33,8 @@ def display_menu():
 def all_students_data(students):
     """
     This function basically first checks if there are any students in the database, if not, it will tell the user
-    that there are no students in the database. And if there are students in the database, it will
+    that there are no students in the database. And if there are students in the database, it will display the students
+    in a nicely formatted report.
     :param students:
     :return:
     """
@@ -58,8 +59,8 @@ def all_students_data(students):
             course_list += course + ', '
         print(f'{course_list:<36s}', end='')
 
-        for course in courses:
-            print(f'{course}', end=', ')
+        for sports_list in sports:
+            print(f'{sports_list}', end=', ')
         print()
 
     return
