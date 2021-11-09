@@ -154,43 +154,46 @@ def delete_student_course(students, valid_courses):
 
     # Display a list of valid courses
     # print('These are the following courses that can be deleted: ')
-    list_valid_courses(student[3], mode='delete')
 
-    # Prompt the user to enter a valid course id or 0 to return to the course maintenance menu
-    print('Please type in a valid course ID or 0 to return to course maintenance menu')
-    choice = v.get_range(prompt='input: ', low=0, high=5)
+    num_courses = list_valid_courses(student[3], mode='delete')
 
     while True:
+
+        # Prompt the user to enter a valid course id or 0 to return to the course maintenance menu
+        print('Please type in a valid course ID or 0 to return to course maintenance menu')
+        choice = v.get_range(prompt='input: ', low=-1, high=num_courses)
 
         if choice == 0:
             print('Returning you back to the course maintenance menu')
             break
 
-        course_choice = valid_courses[choice-1]
+        choice -= 1
+        course_choice = student[3][choice]
 
         if course_choice not in student[3]:
             print('There has been an error.')
+
         else:
             student[3].remove(course_choice)
+            print('This is an update list of all the courses the student is enrolled in.')
+            list_student_courses(student)
+            break
 
-    print('This is an update list of all the courses the student is enrolled in.')
-    list_student_courses(student)
 
-
-def main_menu():
+def main_menu(students, valid_courses):
     """
     This function basically runs different functions from the validation module and the student_mtnc module, in a while
     loop, until the user decided that they no longer want to continue to use the program and exit.
     :return: n/a
     """
 
-    valid_courses = ('English', 'History', 'Math', 'Science')
-    valid_sports = ('Football', 'Volleyball', 'Basketball', 'Track')
-
-    students = [
-        [1, 'John', 'Doe', ['English', 'Science'], ['Volleyball']],
-        [3, 'Sam', 'Smith', ['English', 'History', 'Math'], ['Football', 'Basketball']]
-    ]
+    # valid_courses = ('English', 'History', 'Math', 'Science')
+    # valid_sports = ('Football', 'Volleyball', 'Basketball', 'Track')
+    #
+    # students = [
+    #     [1, 'John', 'Doe', ['English', 'Science'], ['Volleyball']],
+    #     [3, 'Sam', 'Smith', ['English', 'History', 'Math'], ['Football', 'Basketball']]
+    # ]
 
     next_student_id = 4
 
