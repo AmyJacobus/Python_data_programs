@@ -34,8 +34,15 @@ def display_main_menu():
 
 def main():
 
-    students = []
-    next_student_id = 1
+    valid_courses = ('English', 'History', 'Math', 'Science')
+    valid_sports = ('Football', 'Volleyball', 'Basketball', 'Track')
+
+    students = [
+        [1, 'John', 'Doe', ['English', 'Science'], ['Volleyball']],
+        [3, 'Samy', 'Smith', ['English', 'History', 'Math'], ['Football', 'Basketball']]
+    ]
+
+    next_student_id = 4
 
     while True:
         display_main_menu()
