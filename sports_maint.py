@@ -1,15 +1,16 @@
 #!/usr/bin/env python3
 
 """
-Programmers: Programmer: Caleb Fowler and Ammishaddai Jacobus
+Programmers: Caleb Fowler and Ammishaddai Jacobus
 Date: Nov 10, 2021
-Description:
+Description: Chapter 6 Pair Program Assignment-Sport Maintenance Module
+This module contains the functions for adding, updating, and deleting
 """
 
 # Authorship
-__author__ = 'ADD NAMES HERE'
+__author__ = 'Caleb Fowler and Ammishaddai Jacobus'
 __version__ = '1.0'
-__date__ = 'NOV 2, 2021'
+__date__ = 'NOV 10, 2021'
 __status__ = 'Development'
 
 import validation as v
@@ -18,7 +19,8 @@ import student_maintenance as sm
 
 def display_menu():
     """
-    Display menu to the user.
+    Displays a list of all the valid sport maintenance main menu options.
+    It also handles for nonnumerical data and invalid menu option selected
     :return: n/a
     """
     print()
@@ -33,9 +35,9 @@ def display_menu():
 
 def list_student_sports(student):
     """
-
-    :param student:
-    :return:
+    Display the selected student sport information stored in 2D list
+    :param student: 2D list of student data [id, first_name, last_name, [sports], [courses]
+    :return: n/a
     """
     print(f'    Student ID # {student[0]} {student[1]} {student[2]} is in: ', end='')
 
@@ -47,9 +49,10 @@ def list_student_sports(student):
 
 def list_students_sports(students):
     """
-
-    :param students:
-    :return:
+    Display the all student information stored in a multi-dimensional list (id, first_name, last_name)
+    It will notify the student if there is no data found.
+    :param students: multi-dimensional list of student data [[id, first_name, last_name, [sports], [courses]]
+    :return: n/a
     """
 
     if len(students) == 0:
@@ -72,9 +75,10 @@ def list_students_sports(students):
 
 def list_valid_sports(valid_sports, mode='added'):
     """
-    :param valid_sports:
-    :param mode:
-    :return:
+    List all the valid sports
+    :param valid_sports: all the valid sports to select from
+    :param mode: (added or deleted) to be displayed as header
+    :return: n/a
     """
     print(f'Please select from the following list of sports to be {mode}:')
 
@@ -90,6 +94,18 @@ def list_valid_sports(valid_sports, mode='added'):
 
 
 def add_student_sport(students, valid_sports):
+    """
+    Prompt the user to enter a student id, and if not valid return
+    Display  a list of the sports a student is currently in
+    Display a list of valid sports
+    Prompt the user to enter a valid sport id or 0 to return to the sport maintenance menu
+    If the student is already in the sport, then display error message
+    otherwise add the sport to the student's sport list
+    When done, display an update list of all the sports the student is in
+    :param students: multi-dimensional list of student data [[id, first_name, last_name, [sports], [courses]]
+    :param valid_sports: tuple of all valid sports to select from
+    :return: n/a
+    """
     print()
     print('Add student sports')
     print('=' * 50)
@@ -133,6 +149,18 @@ def add_student_sport(students, valid_sports):
 
 
 def delete_student_sport(students, valid_sports):
+    """
+    Prompt the user to enter a student id, and if not valid return
+    Display  a list of the sports a student is currently in
+    Display a list of valid sports
+    Prompt the user to enter a valid sport id or 0 to return to the sport maintenance menu
+    If the student is not in the sport, then display error message
+    otherwise remove the sport to the student's sport list
+    When done, display an update list of all the sports the student is in
+    :param students: multi-dimensional list of student data [[id, first_name, last_name, [sports], [courses]]
+    :param valid_sports: tuple of all the valid sports to select from
+    :return:
+    """
     print()
     print('Delete Students\'s Sports')
     print('_' * 50)
@@ -175,8 +203,10 @@ def delete_student_sport(students, valid_sports):
 
 def main_menu(students, valid_sports):
     """
-    This function basically runs different functions from the validation module and the student_mtnc module, in a while
-    loop, until the user decided that they no longer want to continue to use the program and exit.
+    Keeps the program looping until the user enters 0 to return back to the main menu
+    then based on the user's selected, will call the corresponding function option
+    :param students: multi-dimensional list of student data [[id, first_name, last_name, [sports], [courses]]
+    :param valid_sports: tuple of all valid sports to select from
     :return: n/a
     """
 
