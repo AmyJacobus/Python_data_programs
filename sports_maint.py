@@ -45,6 +45,31 @@ def list_student_sports(student):
     print()
 
 
+def list_students_sports(students):
+    """
+
+    :param students:
+    :return:
+    """
+
+    if len(students) == 0:
+        print('There are no students in the list.')
+        return
+
+    print(f'{"ID":>4s} {"First Name":<15s} {"Last Name":<15s} {"Sports":<43s}')
+    print('=' * 4, '=' * 15, '=' * 15, '=' * 34)
+
+    for student in students:
+        student_id, first_name, last_name, sports, courses = student
+        print(f'{student_id:>4d} {first_name:<15s} {last_name:<15s}', end='')
+
+        for sport in sports:
+            print(f'{sport}', end=', ')
+        print()
+
+    return
+
+
 def list_valid_sports(valid_sports, mode='added'):
     """
     :param valid_sports:
@@ -79,11 +104,9 @@ def add_student_sport(students, valid_sports):
 
     student = students[student_index]  # I have the student now
 
-    #
-    print(f'Student ID # {student[0]} is enrolled in the following courses:')
+    print(f'Student ID # {student[0]} is in the following sports:')
     list_student_sports(student)
 
-    #
     print('These are the following sports that the student can select from: ')
     list_valid_sports(valid_sports, mode='added')
 
@@ -95,12 +118,12 @@ def add_student_sport(students, valid_sports):
 
         sport_name = valid_sports[sport_number - 1]  # get the course name for the valid tuple
 
-        if sport_name in student[3]:
+        if sport_name in student[4]:
             print(f'The student has already selected {sport_name}.')
             continue
         else:
-            student[3].append(sport_name)  # add the course name to the student's list
-            student[3].sort()  # sort the student's sport list
+            student[4].append(sport_name)  # add the course name to the student's list
+            student[4].sort()  # sort the student's sport list
             print(f'The student is now in {sport_name}')
             break
 
@@ -133,7 +156,7 @@ def delete_student_sport(students, valid_sports):
 
         # Prompt the user to enter a valid sport id or 0 to return to the sport maintenance menu
         print('Please type in a valid sport ID or 0 to return to sports maintenance menu')
-        choice = v.get_range(prompt='input: ', low=0, high=num_sports)
+        choice = v.get_range(prompt='input: ', low=-1, high=num_sports)
 
         if choice == 0:
             print('Returning you back to the sports maintenance menu')
@@ -145,9 +168,9 @@ def delete_student_sport(students, valid_sports):
             print('There has been an error.')
         else:
             student[4].remove(sport_choice)
-
-    print('This is an update list of all the sports the student is in.')
-    list_student_sports(student)
+            print('This is an update list of all the sports the student is in.')
+            list_student_sports(student)
+            break
 
 
 def main_menu(students, valid_sports):
@@ -172,7 +195,7 @@ def main_menu(students, valid_sports):
 
         command = v.get_range(prompt='Please enter a Menu #(Valid 0-4)', low=-1, high=4, data_type='int')
         if command == 1:
-            list_student_sports(students)
+            list_students_sports(students)
         elif command == 2:
             add_student_sport(students, valid_sports)
         elif command == 3:
