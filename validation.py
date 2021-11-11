@@ -7,9 +7,9 @@ Description:
 """
 
 # Authorship
-__author__ = 'ADD NAMES HERE'
+__author__ = 'Caleb Fowler and Ammishaddai Jacobus'
 __version__ = '1.0'
-__date__ = 'NOV 2, 2021'
+__date__ = 'NOV 11, 2021'
 __status__ = 'Development'
 
 
