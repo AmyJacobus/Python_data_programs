@@ -35,17 +35,20 @@ def all_students_data(students):
     This function basically first checks if there are any students in the database, if not, it will tell the user
     that there are no students in the database. And if there are students in the database, it will display the students
     in a nicely formatted report.
-    :param students:
-    :return:
+    :param students: This module takes the parameter students in order to use the list information to output
+    that data nicely formatted.
+    :return: n/a
     """
 
+    print()
     print('Report of all students in the database')
+    print()
 
     if len(students) == 0:
         print('There are no students in the list.')
         return
 
-    print(f'{"ID":>4s} {"First Name":<15s} {"Last Name":<15s} {"Courses":<43s} {"sports":<53s}')
+    print(f'{"ID":>4s} {"First Name":<15s} {"Last Name":<15s} {"Courses":<34s} {"sports":<53s}')
     print('=' * 4, '=' * 15, '='*15, '=' * 34,'=' * 54 )
 
     for student in students:
@@ -67,6 +70,13 @@ def all_students_data(students):
 
 
 def main_menu(students):
+    """
+    THis is the main menu for the student report module. It displays the menu of this module. It takes user input of
+    menu option they want to choose, it validates their input. They can either choose to see the report or choose
+    to exit the this module. The main also tells them once they have successfully exited the database.
+    :param students: This module takes the paramater student to use the list students to run other functions in this module.
+    :return: n/a
+    """
 
 
     while True:
