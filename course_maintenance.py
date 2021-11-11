@@ -3,14 +3,17 @@
 """
 Programmers: Programmer: Caleb Fowler and Ammishaddai Jacobus
 Date: Nov 10, 2021
-Description:
+Description:  This module basically stores student records. It can add students courses, it can update the courses for
+each student,it can delete courses for each student, and you can also check for all the courses that a student is enrolled
+in, or check all the students and all the courses they all are enrolled in. It outputs all the data information in a
+nicely formatted report.
 """
 
 import validation as v
 import student_maintenance as sm
 
 # Authorship
-__author__ = 'ADD NAMES HERE'
+__author__ = 'Caleb Fowler and Ammishaddai Jacobus'
 __version__ = '1.0'
 __date__ = 'NOV 2, 2021'
 __status__ = 'Development'
@@ -32,6 +35,12 @@ def display_menu():
 
 
 def list_student_courses(student):
+    """
+    This function displays one specific students in the database with their enrolled courses.
+    :param student: Takes the parameter student to have access to this specific student data to be used in this
+    function.
+    :return:
+    """
 
     print(f'       Student ID # {student[0]} {student[1]} {student[2]} is in: ', end='')
 
@@ -43,7 +52,9 @@ def list_student_courses(student):
 
 def list_students_courses(students):
     """
-
+    This function first checks is there are students in the database, if not, it will tell the user that there are no
+    students in the database. And if there are students, it will display a full report of all the students in
+    the database with their courses that they are enrolled in. Output is displayed in a nicely formatted report.
     :param students:
     :return:
     """
@@ -68,9 +79,11 @@ def list_students_courses(students):
 
 def list_valid_courses(valid_courses, mode='added'):
     """
-
-    :param valid_courses:
-    :param mode:
+    This function displays the valid courses that a student can enrolled in, it outputs the valid courses with a number
+    assigned to each.
+    :param valid_courses: It takes the list valid_courses to be used in this function.
+    :param mode: This is a mode that stores a string, that basically can be used in other functions if they choose to
+     use this function.
     :return: num_courses so other functions or modules can make use of it
     """
 
@@ -88,6 +101,17 @@ def list_valid_courses(valid_courses, mode='added'):
 
 
 def add_student_course(students, valid_courses):
+    """
+    This function displays the message of add student courses to let the user know they are in that section of the menu.
+    It takes the user input of the student ID, basically the student they want to add a course to, it validates
+    their input (checks if its positive), gets the user student out of the student list, to access that student's information.
+    It lists the valid courses that you can add for that students, it asks what courses the user wants to add for the
+    student, and validates their input on that, and adds the courses, it also outputs the updated information to
+    let the user know what they have updated exactly.
+    :param students: It takes the parameter students, to be able to make use of the students list in this function.
+    :param valid_courses: It takes the parameter students, to be able to make use of the valid courses in this function.
+    :return: n/a
+    """
 
     print('Add student courses')
     print('='*50)
@@ -134,6 +158,18 @@ def add_student_course(students, valid_courses):
 
 
 def delete_student_course(students, valid_courses):
+    """
+    THis function basically helps the user delete courses for a specific student. It takes the user input of the
+    student they would like to delete a course for, validates that, to make sure the ID input is a positive number,
+    gets the specific student based of that ID input, it displays what courses this student is currently enrolled in,
+    it then display the list of valid courses for the user to see, gives the user the chance to type in a course they
+    want to delete or press 0 to not make any changes to this student courses. And if the user does go through
+    with making changes, basically the user will get an update information to let them know that the changes were made,
+    and what changes were made exactly.
+    :param students: THis function takes the parameter students, to make use of it in this function to run certain statements.
+    :param valid_courses: THis function takes the parameter students, to make use of it in this funciton to run certain statements.
+    :return: n/a
+    """
 
     print()
     print('Delete Courses')
@@ -186,16 +222,6 @@ def main_menu(students, valid_courses):
     loop, until the user decided that they no longer want to continue to use the program and exit.
     :return: n/a
     """
-
-    # valid_courses = ('English', 'History', 'Math', 'Science')
-    # valid_sports = ('Football', 'Volleyball', 'Basketball', 'Track')
-    #
-    # students = [
-    #     [1, 'John', 'Doe', ['English', 'Science'], ['Volleyball']],
-    #     [3, 'Sam', 'Smith', ['English', 'History', 'Math'], ['Football', 'Basketball']]
-    # ]
-
-    next_student_id = 4
 
     while True:
 

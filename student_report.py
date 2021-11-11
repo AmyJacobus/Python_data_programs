@@ -12,7 +12,7 @@ import validation as v
 
 
 # the following are module level dunders (metadata) for the authorship information
-__author__ = 'Caleb Fowler & Amy Jacobus'
+__author__ = 'Caleb Fowler and Ammishaddai Jacobus'
 __version__ = '1.0'
 __date__ = '2021.11.02'
 _status__ = 'Development'
@@ -74,7 +74,7 @@ def main_menu(students):
     THis is the main menu for the student report module. It displays the menu of this module. It takes user input of
     menu option they want to choose, it validates their input. They can either choose to see the report or choose
     to exit the this module. The main also tells them once they have successfully exited the database.
-    :param students: This module takes the paramater student to use the list students to run other functions in this module.
+    :param students: This module takes the parameter student to use the list students to run other functions in this module.
     :return: n/a
     """
 

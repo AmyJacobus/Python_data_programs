@@ -3,11 +3,13 @@
 """
 Programmers: Programmer: Caleb Fowler and Ammishaddai Jacobus
 Date: Nov 10, 2021
-Description:
+Description: This module basically stores student records. It can add students, it can update student
+information, delete student information, and you can also check for all the users that are stored in the database,
+it outputs the database in a report format.
 """
 
 # Authorship
-__author__ = 'Amy and Caleb'
+__author__ = 'Caleb Fowler and Ammishaddai Jacobus'
 __version__ = '1.0'
 __date__ = 'NOV 2, 2021'
 __status__ = 'Development'
