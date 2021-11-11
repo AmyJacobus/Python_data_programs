@@ -3,7 +3,9 @@
 """
 Programmers: Programmer: Caleb Fowler and Ammishaddai Jacobus
 Date: Nov 10, 2021
-Description:
+Description: This is the validation module that is going to be used by all other modules in the main program or in their
+own functions to validate their number input ranges, positive number input, number input, string input, and yes or no
+input.
 """
 
 # Authorship
